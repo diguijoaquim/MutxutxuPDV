@@ -9,9 +9,9 @@ from sqlalchemy import or_
 
 
 info= {
-    "app":"JP Invest",
+    "app":"Mutxutxu PDV",
     "data":{
-        "nome":"JP Invest",
+        "nome":"Mutxutxu PDV",
         "localizacao":"",
         "cidade":"Lichinga",
         "nuit":1667287375365,
@@ -26,7 +26,7 @@ info= {
     },
     "admin":{
         "nome":"Miguel",
-        "apelido":"Araujo",
+        "apelido":"Dulce",
         "email":"admin@gmail.com",
         "contacto":877136613,
         "username":"admin",
@@ -39,7 +39,7 @@ info= {
 
 # Cria a engine do SQLAlchemy
 # Define o caminho do banco de dados
-db_path = os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest", "banco.db")
+db_path = os.path.join(os.getenv("LOCALAPPDATA"), ".pdv", "banco.db")
 db_directory = os.path.dirname(db_path)
 
 # Verifica se a pasta existe e, se não, cria

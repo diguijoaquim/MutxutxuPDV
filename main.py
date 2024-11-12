@@ -45,7 +45,7 @@ def print_receipt(dados, printer_name="XP-80C"):
 
         esc_pos_commands = b'\x1b\x40'  # Inicia o documento (ESC @)
         esc_pos_commands += b'\x1b\x45\x01'  # Habilita negrito
-        esc_pos_commands += b'JP INVEST, LTD!\n'
+        esc_pos_commands += b'Mutxutxu PDV, LTD!\n'
         esc_pos_commands += b'\x1b\x45\x00'  # Desabilita negrito
         esc_pos_commands += f'Data: {dados['data']}\n'.encode('utf-8')
         esc_pos_commands += b'----------------------------------------------\n'
@@ -69,7 +69,7 @@ def print_receipt(dados, printer_name="XP-80C"):
         esc_pos_commands += b'-----------------------------------------------\n'
         esc_pos_commands += f'Cliente/Mesa: {dados['cliente']}\n'.encode('utf-8')
         esc_pos_commands += b'-----------------Volte-Sempre-------------------\n'
-        esc_pos_commands += b'pdv lite by bluesprk mz\n'
+        esc_pos_commands += b'BlueSpark MZ - Softwares\n'
 
         esc_pos_commands += b'\x1b\x64\x02'
         esc_pos_commands += b'\x1d\x56\x41\x00'
@@ -128,7 +128,7 @@ horas=ft.Container()
     
 def main(page: ft.Page):
     page.title="PDV Niassa"
-    page.title="Ponto de venda - JP Invest"
+    page.title="Ponto de venda - Mutxutxu PDV"
     page.theme_mode=ft.ThemeMode.LIGHT
     page.padding=0
     page.window.full_screen=True
@@ -159,20 +159,23 @@ def main(page: ft.Page):
 
     categoria_lista = [
         "Todos os Produtos",
-        "Congelados",
-        "Cozinha",
-        "Sumos, agua e refrescos",
-        "Azeites",
-        "Chas,leite e cafe",
-        "Temperos",
-        "Bolachas,doces",
-        "Sardinhas",
-        "Produtos de higiene",
-        "Bolos e salgados",
-        "Outos",
-        "pizzas",
-        "docuras",
-        "Servicos de lavagem"
+        "Entradas & Petiscos",
+        "Pratos Principais",
+        "Prato do Dia",
+        "Carnes & Sanduíches",
+        "Peixes & Mariscos",
+        "Pizzas",
+        "Extras",
+        "Sobremesas",
+        "Bebidas Alcoólicas",
+        "Cervejas & Cidras",
+        "Vinhos & Champanhes",
+        "Gin & Whisky",
+        "Cocktails",
+        "Refrescos & Sucos",
+        "Cafetaria",
+        "Cigarros",
+        "Outros"
 
         
     ]
@@ -232,7 +235,7 @@ def main(page: ft.Page):
                                                     ]),)),
                     ft.Stack(width=200,height=650,controls=[
                     lista_vendas,
-                    ft.Card(width=240,
+                    ft.Card(width=235,
                             bottom=260,
                             content=ft.Container(padding=10,content=ft.Column(controls=[
                                 total_text
@@ -334,7 +337,7 @@ def main(page: ft.Page):
 
     
 
-    imagens=os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+    imagens=os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
     
     def file_picker_result(e: ft.FilePickerResultEvent):
         global selected_file_path
@@ -394,7 +397,7 @@ def main(page: ft.Page):
                                                         ]),)),
                         ft.Stack(width=260,height=650,controls=[
                         lista_vendas,
-                        ft.Card(width=240,
+                        ft.Card(width=235,
                                 bottom=260,
                                 content=ft.Container(padding=10,content=ft.Column(controls=[
                                     total_text
@@ -1832,7 +1835,8 @@ def main(page: ft.Page):
     search_categoria = ft.Dropdown(
         label="Categoria",
         options=[ft.dropdown.Option(categoria) for categoria in categoria_lista],
-        on_change=submit
+        on_change=submit,
+        width=200
     )
     input_categoria = ft.Dropdown(
         label="Categoria",
@@ -1840,7 +1844,7 @@ def main(page: ft.Page):
         options=[ft.dropdown.Option(categoria) for categoria in categoria_lista],
         on_change=submit
     )
-    search=ft.TextField(label="Procurar Produto",border_radius=12,on_change=submit)
+    search=ft.TextField(label="Procurar Produto",border_radius=12,on_change=submit,width=150)
 
     search_categoria2 = ft.Dropdown(
         label="Categoria",
@@ -2014,7 +2018,7 @@ def main(page: ft.Page):
         page.update()
     def update_produto(e):
         global dlg_edit,selected_file_path
-        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
 
         if  not selected_file_path:
             pass
@@ -2059,7 +2063,7 @@ def main(page: ft.Page):
             status_text.value = "Por favor, selecione um arquivo primeiro."
             page.update()
             return
-        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
         if not os.path.exists(destination_dir):
             os.makedirs(destination_dir)
         filename = os.path.basename(selected_file_path)
@@ -2200,7 +2204,7 @@ def main(page: ft.Page):
                                                     ]),)),
                     ft.Stack(width=260,height=650,controls=[
                     lista_vendas,
-                    ft.Card(width=240,
+                    ft.Card(width=235,
                             bottom=260,
                             content=ft.Container(padding=10,content=ft.Column(controls=[
                                 total_text
