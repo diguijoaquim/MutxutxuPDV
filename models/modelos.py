@@ -23,6 +23,7 @@ class Produto(Base):
     image=Column(String(100))
     quantidade_venda=Column(Integer)
     categoria=Column(String(50))
+    estoquerequired=Column(String(50))
 
 
     
