@@ -17,7 +17,7 @@ os.environ["FLET_WS_MAX_MSG_SIZE"] = "8000000"
 selected_file_path = None
 logging.basicConfig(level=logging.INFO)
 
-def abrir_gaveta(printer_name="XP-80C", comando=b'\x1b\x70\x00\x19\xfa'):
+def abrir_gaveta(printer_name="GA-E200 Series", comando=b'\x1b\x70\x00\x19\xfa'):
     try:
         hPrinter = win32print.OpenPrinter(printer_name)
         hJob = win32print.StartDocPrinter(hPrinter, 1, ("Abrir Gaveta", None, "RAW"))
@@ -35,7 +35,7 @@ def abrir_gaveta(printer_name="XP-80C", comando=b'\x1b\x70\x00\x19\xfa'):
     finally:
         win32print.ClosePrinter(hPrinter)
 
-def print_receipt(dados, printer_name="XP-80C"):
+def print_receipt(dados, printer_name="GA-E200 Series"):
     print(dados)
     try:
         hPrinter = win32print.OpenPrinter(printer_name)
@@ -158,24 +158,19 @@ def main(page: ft.Page):
         page.update()
 
     categoria_lista = [
-        "Todos os Produtos",
-        "Congelados",
-        "Cozinha",
-        "Sumos, agua e refrescos",
-        "Azeites",
-        "Chas,leite e cafe",
-        "Temperos",
-        "Bolachas,doces",
-        "Sardinhas",
-        "Produtos de higiene",
-        "Bolos e salgados",
-        "Outos",
-        "pizzas",
-        "docuras",
-        "Servicos de lavagem"
-
-        
-    ]
+                "Todos os Produtos",
+                "Comida",
+                "Cervejas ou Cidras",
+                "Vinhos",
+                "Petiscos",
+                "Pizzas",
+                "Sopas",
+                "Carnes & Sandes",
+                "Mariscos",
+                "Acompanhante",
+                "Massas",
+                "Champanhe"
+            ]
 
     categoria = ft.Dropdown(
         label="Categoria",
