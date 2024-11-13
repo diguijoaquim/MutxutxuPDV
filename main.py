@@ -334,7 +334,7 @@ def main(page: ft.Page):
 
     
 
-    imagens=os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+    imagens=os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
     
     def file_picker_result(e: ft.FilePickerResultEvent):
         global selected_file_path
@@ -2088,7 +2088,7 @@ def main(page: ft.Page):
         page.update()
     def update_produto(e):
         global dlg_edit,selected_file_path
-        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
 
         if  not selected_file_path:
             pass
@@ -2135,7 +2135,7 @@ def main(page: ft.Page):
             status_text.value = "Por favor, selecione um arquivo primeiro."
             page.update()
             return
-        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".jpInvest/img")
+        destination_dir = os.path.join(os.getenv("LOCALAPPDATA"), ".pdv/img")
         if not os.path.exists(destination_dir):
             os.makedirs(destination_dir)
         filename = os.path.basename(selected_file_path)
